@@ -6,9 +6,10 @@ import (
 )
 
 func Get(s []int) (int, error) {
-	if s != nil {
-		sort.Ints(s)
-		return s[cap(s)-2], nil
+	if s == nil {
+		return 0, errors.New("empty slice")
 	}
-	return 0, errors.New("empty slice")
+
+	sort.Ints(s)
+	return s[len(s)-2], nil
 }
